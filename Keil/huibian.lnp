@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"huibian.obj" 
+TO "huibian" 
+RAMSIZE(256) 

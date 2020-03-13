@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\25832\Desktop\Keil\xunhuanxiaodeng.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+assembling zuoyexiaodeng.ASM...
+zuoyexiaodeng.ASM(6): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(8): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(15): warning A73: TEXT FOUND BEYOND END STATEMENT - IGNORED
+zuoyexiaodeng.ASM - 2 Error(s), 1 Warning(s).
+assembling zuoyexiaodeng.ASM...
+zuoyexiaodeng.ASM(7): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(9): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(16): warning A73: TEXT FOUND BEYOND END STATEMENT - IGNORED
+zuoyexiaodeng.ASM - 2 Error(s), 1 Warning(s).
+assembling zuoyexiaodeng.ASM...
+zuoyexiaodeng.ASM(7): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(9): error A45: UNDEFINED SYMBOL (PASS-2)
+zuoyexiaodeng.ASM(16): warning A73: TEXT FOUND BEYOND END STATEMENT - IGNORED
+zuoyexiaodeng.ASM - 2 Error(s), 1 Warning(s).
+assembling zuoyexiaodeng.ASM...
+zuoyexiaodeng.ASM - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling zuoyexiaodeng...
+A51 MACRO ASSEMBLER V8.01 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2007
+"C:\Keil\C51\BIN\A51.EXE" "zuoyexiaodeng" SET (SMALL) DEBUG EP
+A51 FATAL ERROR -
+  FILE:       zuoyexiaodeng
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+assembling zuoyexiaodeng...
+A51 MACRO ASSEMBLER V8.01 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2007
+"C:\Keil\C51\BIN\A51.EXE" "zuoyexiaodeng" SET (SMALL) DEBUG EP
+A51 FATAL ERROR -
+  FILE:       zuoyexiaodeng
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling zuoyexiaodeng...
+A51 MACRO ASSEMBLER V8.01 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2007
+"C:\Keil\C51\BIN\A51.EXE" "zuoyexiaodeng" SET (SMALL) DEBUG EP
+A51 FATAL ERROR -
+  FILE:       zuoyexiaodeng
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+assembling zuoyexiaodeng...
+A51 MACRO ASSEMBLER V8.01 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2007
+"C:\Keil\C51\BIN\A51.EXE" "zuoyexiaodeng" SET (SMALL) DEBUG EP
+A51 FATAL ERROR -
+  FILE:       zuoyexiaodeng
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+Target not created
