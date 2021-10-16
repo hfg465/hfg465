@@ -1,0 +1,184 @@
+C51 COMPILER V9.60.0.0   LCD12232_MAIN                                                     10/08/2021 21:46:26 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD12232_MAIN
+OBJECT MODULE PLACED IN .\Objects\lcd12232_main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd12232_main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\lcd12232_main.lst) TABS(2) OBJECT(.\Objects\lcd12232_main.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uint unsigned int
+   3          #define uchar unsigned char
+   4          
+   5          sbit cs=P2^0;             //串行口片选端 选中 1；不选 0
+   6          sbit sclc=P2^1;           //时钟端
+   7          sbit sid=P2^2;            //数据输入端
+   8          
+   9          //uchar num;
+  10          uchar code tab1[]="I LOVE MICROCONTROLLER! ";
+  11          uchar code tab2[]="我爱单片机!";
+  12          
+  13          void lcd_init();
+  14          void status();
+  15          void wr_cmd(uchar);
+  16          void wr_data(uchar);
+  17          void delay(uint);
+  18          void disp_s();
+  19          void disp_x();
+  20          
+  21          void main()
+  22          {
+  23   1        lcd_init();
+  24   1        disp_s();
+  25   1        disp_x();
+  26   1        while(1);
+  27   1      }
+  28          
+  29          /*LCD初始化*/
+  30          void lcd_init()
+  31          {
+  32   1        delay(100);
+  33   1        wr_cmd(0x30);             //显示模式设置：16×2显示，5×7点阵，8位数据口
+  34   1        wr_cmd(0x02);             //开显示，显示光标，光标闪烁；bit2对应显示，bit1对应光标，bit0对应光标闪烁
+  35   1        wr_cmd(0x06);             //写一个字符后地址指针+1；bit1=1 指针+1，bit1=0 指针-1；bit0=1整屏移动……
+  36   1        wr_cmd(0x0c);             //显示清屏：数据指针清0，所有显示清0  02H：数据指针清0
+  37   1        wr_cmd(0x01);
+  38   1        wr_cmd(0x80);
+  39   1      }
+  40          
+  41          /*液晶状态查询*/    /*
+  42          void status()           // status 函数可能出了问题，没有使用
+  43          {
+  44            uchar sta;
+  45            P0=0xff;              //读外部状态前 P0 先置高电平
+  46            rs=0;
+  47            rw=1;
+  48            do                //当 P0 有多个中断使用时，读完状态后应置 le=0
+  49            {
+  50              le=1;
+  51              delay(1);
+  52              sta=P0;
+  53            }while(sta&0x80);
+  54            le=0;
+C51 COMPILER V9.60.0.0   LCD12232_MAIN                                                     10/08/2021 21:46:26 PAGE 2   
+
+  55          }*/
+  56          
+  57          /*写指令*/
+  58          void wr_cmd(uchar cmd)
+  59          {
+  60   1        uchar i,i_dat;
+  61   1        i_dat=0xf8;            // 写指令的指令码
+  62   1        cs=1;
+  63   1        sclc=0; 
+  64   1        for(i=0;i<8;i++)
+  65   1        {
+  66   2          sid=(bit)i_dat&0x80;
+  67   2          sclc=0;
+  68   2          sclc=1;
+  69   2          i_dat<<=1;
+  70   2        }
+  71   1        i_dat=cmd;
+  72   1        i_dat&=0xf0;
+  73   1        for(i=0;i<8;i++)
+  74   1        {
+  75   2          sid=(bit)i_dat&0x80;
+  76   2          sclc=0;
+  77   2          sclc=1;
+  78   2          i_dat<<=1;
+  79   2        }
+  80   1        i_dat=cmd;
+  81   1        i_dat<<=4;
+  82   1        for(i=0;i<8;i++)
+  83   1        {
+  84   2          sid=(bit)i_dat&0x80;
+  85   2          sclc=0;
+  86   2          sclc=1;
+  87   2          i_dat<<=1;
+  88   2        }
+  89   1        cs=0;
+  90   1        delay(1);
+  91   1      }
+  92          
+  93          /*写数据*/
+  94          void wr_data(uchar dat)
+  95          {
+  96   1        uchar i,i_dat;
+  97   1        i_dat=0xfa;            // 写数据的指令码
+  98   1        cs=1;
+  99   1        sclc=0; 
+ 100   1        for(i=0;i<8;i++)
+ 101   1        {
+ 102   2          sid=(bit)i_dat&0x80;
+ 103   2          sclc=0;
+ 104   2          sclc=1;
+ 105   2          i_dat<<=1;
+ 106   2        }
+ 107   1        i_dat=dat;
+ 108   1        i_dat&=0xf0;
+ 109   1        for(i=0;i<8;i++)
+ 110   1        {
+ 111   2          sid=(bit)i_dat&0x80;
+ 112   2          sclc=0;
+ 113   2          sclc=1;
+ 114   2          i_dat<<=1;
+ 115   2        }
+ 116   1        i_dat=dat;
+C51 COMPILER V9.60.0.0   LCD12232_MAIN                                                     10/08/2021 21:46:26 PAGE 3   
+
+ 117   1        i_dat<<=4;
+ 118   1        for(i=0;i<8;i++)
+ 119   1        {
+ 120   2          sid=(bit)i_dat&0x80;
+ 121   2          sclc=0;
+ 122   2          sclc=1;
+ 123   2          i_dat<<=1;
+ 124   2        }
+ 125   1        cs=0;
+ 126   1        delay(1);
+ 127   1      }
+ 128          
+ 129          /*显示第一行字符*/
+ 130          void disp_s()
+ 131          {
+ 132   1        uchar a;
+ 133   1        wr_cmd(0x80);
+ 134   1        for(a=0;a<25;a++)
+ 135   1        {
+ 136   2          wr_data(tab1[a]);
+ 137   2        }
+ 138   1      }
+ 139          
+ 140          void disp_x()
+ 141          {
+ 142   1        uchar b;
+ 143   1        wr_cmd(0x90);
+ 144   1        for(b=0;b<11;b++)
+ 145   1        {
+ 146   2          wr_data(tab2[b]);
+ 147   2        }
+ 148   1      }
+ 149          
+ 150          /*延时函数*/
+ 151          void delay(uint xms)
+ 152          {
+ 153   1        uint i,j;
+ 154   1        for(i=xms;i>0;i--)
+ 155   1          for(j=113;j>0;j--);
+ 156   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    386    ----
+   CONSTANT SIZE    =     37    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
