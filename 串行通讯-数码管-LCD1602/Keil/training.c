@@ -25,6 +25,7 @@ void init_51c()
 /*主函数入口*/
 void main()
 {
+	uchar m;                        //用于给LCD1602发送数据计数
 	uchar key0=0;      //用于判断键值是否更新，若发生更新再发送新的键值，若没有更新则不发送
 	init_51c();
 	lcd_init();
@@ -44,7 +45,15 @@ void main()
 		{
 			ES=0;
 			wr_data(aa);
-			if(aa=='.')wr_cmd(0x02);       //LCD指针数据清零
+			if(aa=='.')
+			{
+				wr_cmd(0x80|0x40);          //第二行地址指针设置
+				for(m=0;m<5;m++)
+				{
+					wr_data(pipi[m]);delay(3);
+				}
+				wr_cmd(0x02);               //LCD指针数据清零
+			}
 			flag=0;
 			ES=1;
 		}
