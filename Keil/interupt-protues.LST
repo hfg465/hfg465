@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  INTERUPT_PROTUES                                                     02/14/2020 09:45:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN interupt-protues.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE interupt-protues.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1               ORG 0000H                      ;程序开始
+0000 2100              2               AJMP MAIN                      ;
+0003                   3               ORG 0003H                      ;外部中断0入口
+0003 210B              4               AJMP INT0X             ;
+0100                   5               ORG 0100H                  ;主程序入口
+0100 758130            6      MAIN:MOV SP,#30H
+0103 75A881            7           MOV IE,#81H                ;SETB EA;SETB EX0
+0106 758801            8               MOV TCON,#01H          ;(SETB IT0)  //CLR IT0
+0109 80FE              9      HERE:SJMP $
+010B B291             10     INT0X:CPL P1.1
+                      11               ;JNB P3.2,$  //电平触发方式，防止误操作
+010D 32               12               RETI
+                      13               END
+A51 MACRO ASSEMBLER  INTERUPT_PROTUES                                                     02/14/2020 09:45:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0109H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INT0X. . . . . . .  C ADDR   010BH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

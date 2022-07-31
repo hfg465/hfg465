@@ -1,0 +1,142 @@
+C51 COMPILER V9.60.0.0   LCD                                                               04/27/2021 10:22:13 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN lcd.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          #include"lcd0.h"
+   4          
+   5          uchar temp[]="temp:";
+   6          uchar unit_temp[]={"C"};
+   7          uchar wspeed[]={"speed:"};
+   8          uchar unit_wspeed[]={"m/s"};
+   9          uchar area[]={"area:"};
+  10          uchar unit_area[]={"m2"};
+  11          uchar wcap[]={"cap:"};
+  12          uchar unit_wcap[]={"m3/s"};
+  13          
+  14          void main()
+  15          {
+  16   1        uint i;
+  17   1        init_lcd();
+  18   1        for(i=1;i<=4;i++)
+  19   1          lcd_display(i);
+  20   1        while(1);
+  21   1      }
+  22          
+  23          /*****写命令入LCD*****/
+  24          void write_cmd(uchar cmd)
+  25          {
+  26   1        rs=0;
+  27   1        rw=0;
+  28   1        P0=cmd;
+  29   1        delay_ms(5);
+  30   1        lcden=1;
+  31   1        delay_ms(5);
+  32   1        lcden=0;
+  33   1      }
+  34          
+  35          /*****写数据入LCD******/
+  36          void write_data(uchar dat)
+  37          {
+  38   1        rs=1;
+  39   1        rw=0;
+  40   1        P0=dat;
+  41   1        delay_ms(5);
+  42   1        lcden=1;
+  43   1        delay_ms(5);
+  44   1        lcden=0;
+  45   1      }
+  46          
+  47          /*****初始化LCD******/
+  48          void init_lcd()
+  49          {
+  50   1        dula=0;
+  51   1        wela=0;
+  52   1        lcden=0;
+  53   1        write_cmd(0x38);    //设置16*2显示，5*7点阵，8位数据口
+  54   1        write_cmd(0x0c);   //设置开显示，不显示光标
+  55   1        write_cmd(0x06);    //写一个字符后，地址指针加 1
+C51 COMPILER V9.60.0.0   LCD                                                               04/27/2021 10:22:13 PAGE 2   
+
+  56   1        write_cmd(0x01);    //显示清零，数据指针清零
+  57   1      }
+  58          
+  59          /*****设定显示位置*****/
+  60          void lcd_position(uchar x,uchar y)
+  61          {
+  62   1        if(x==1)
+  63   1          write_cmd(0x80+y);       //数据指针=80+地址变量，80+00
+  64   1        if(x==2)
+  65   1          write_cmd(0xc0+y);
+  66   1        if(x==3)
+  67   1          write_cmd(0x90+y);       //  80+10
+  68   1        if(x==4)
+  69   1          write_cmd(0xd0+y);
+  70   1      }
+  71          
+  72          /*****显示字符******/
+  73          void lcd_string(uchar x,uchar y,uchar str[])
+  74          {
+*** WARNING C235 IN LINE 74 OF lcd.c: parameter 3: different types
+  75   1        uchar i;
+  76   1        uint q,w;
+  77   1        lcd_position(x,y);
+  78   1        for(i=0;str[i]!='\0';i++)
+  79   1          write_data(str[i]);
+  80   1        for(q=5;q>0;q--)       //延时大约 5ms
+  81   1          for(w=114;w>0;w--);
+  82   1      }
+  83          
+  84          /*****显示数字*****
+  85          void lcd_data(uchar dat)
+  86          {
+  87          
+  88          }*/
+  89          
+  90          /*****显示函数*****/
+  91          void lcd_display(uchar var)
+  92          {
+  93   1        switch(var)
+  94   1        {
+  95   2          case 1: lcd_string(1,0,temp);lcd_string(1,13,unit_temp);break;
+  96   2          case 2: lcd_string(2,0,wspeed);lcd_string(2,12,unit_wspeed);break;
+  97   2          case 3: lcd_string(3,0,area);lcd_string(3,12,unit_area);break;
+  98   2          case 4: lcd_string(4,0,wcap);lcd_string(4,11,unit_wcap);break;
+  99   2        }
+ 100   1      }
+ 101          void delay_ms(uint x)
+ 102          {
+ 103   1        
+ 104   1        uint i,j;
+ 105   1        for(i=x;i>0;i--)
+ 106   1          for(j=114;j>0;j--);
+ 107   1      }
+ 108          void delay_us(uchar y)
+ 109          {
+ 110   1        uchar i;
+ 111   1        for(i=0;i<y;i++)
+ 112   1          _nop_();
+ 113   1      }
+*** WARNING C316 IN LINE 113 OF lcd.c: unterminated conditionals
+
+
+C51 COMPILER V9.60.0.0   LCD                                                               04/27/2021 10:22:13 PAGE 3   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    372    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     38       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

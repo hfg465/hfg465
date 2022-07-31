@@ -1,0 +1,18 @@
+$>Has opened/created the file '%s'.
+$>bwfile.txt
+$>Now input something into the file 'bwfile.txt'(input '#' to quit).
+
+Here's what you typed:
+哈哈哈哈哈
+醉后不知天在水，满船清梦压星河
+$>Has opened/created the file 'bwfile.txt'.
+$>bwfile.txt
+$>Now input something into the file 'bwfile.txt'(input '#' to quit).
+
+The character you gonna find is 'n'.
+
+Here's what you typed:
+hello world!
+hi oppo;
+Have eaten?
+It's a nice day,isn't it?

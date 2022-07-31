@@ -1,0 +1,97 @@
+C51 COMPILER V9.60.0.0   TRAINING1                                                         10/20/2021 22:12:50 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TRAINING1
+OBJECT MODULE PLACED IN .\Objects\training1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE training1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\training1.lst) TABS(2) OBJECT(.\Objects\training1.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uint unsigned int
+   3          #define uchar unsigned char
+   4          
+   5          uchar code seg_tab[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,    //共阴极数码管段码
+   6                             0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x40};
+   7          uchar code key_to_str[]="0123456789ABCDEF-";  //将键值转换为字符发送
+   8          uchar key=16;                    //数码管显示初值设定
+   9          sbit seg_ch=P2^0;                //定义数码管片选端
+  10          uint i,j;                        //延时函数循环因子
+  11          uchar t_key[]="I got a ";        //该芯片收到数据后，返回的内容
+  12          
+  13          void delay(uint xms)
+  14          {
+  15   1        for(i=xms;i>0;i--)
+  16   1          for(j=113;j>0;j--);
+  17   1      }
+  18                             
+  19          void init_main()
+  20          {
+  21   1        EA=1;                   //中断总允许 开
+  22   1        ES=1;                   //串行中断允许 开
+  23   1        SM0=0;                  //设置串行工作方式 1
+  24   1        SM1=1;
+  25   1        REN=1;                  //串行数据接收允许 开
+  26   1        TMOD=0x20;              //设置定时器工作方式 1
+  27   1        TH1=0xfd;               //设置定时初值/波特率，9600 bps
+  28   1        TL1=0xfd;
+  29   1        TR1=1;                  //定时器开启
+  30   1        seg_ch=0;               //数码管片选 开启
+  31   1      } 
+  32                             
+  33          /*主函数入口*/                   
+  34          void main()
+  35          {
+  36   1        uchar i,key0=0;             // key0 用于保存上一个 key 值
+  37   1        init_main();
+  38   1        while(1)
+  39   1        {
+  40   2          P0=seg_tab[key];
+  41   2          if(key0!=key)              //若 key 值有变化，发送 t_key[] 与收到的新 key 值
+  42   2          {
+  43   3            ES=0;                    //禁止中断，以免发送数据时进入中断程序执行发生混乱
+  44   3            i=0;
+  45   3            while(t_key[i]!='\0')    //发送 t_key[]
+  46   3            {
+  47   4              SBUF=t_key[i];
+  48   4              while(!TI);
+  49   4              TI=0;
+  50   4              i++;
+  51   4              delay(5);              //延长两字符间的发送时间间隔，否则发生数据丢失
+  52   4            }
+  53   3            key0=key;
+  54   3            SBUF=key_to_str[key0];   //发送键值
+C51 COMPILER V9.60.0.0   TRAINING1                                                         10/20/2021 22:12:50 PAGE 2   
+
+  55   3            while(!TI);
+  56   3            TI=0;
+  57   3            delay(5);
+  58   3            SBUF='.';
+  59   3            while(!TI);
+  60   3            TI=0;
+  61   3            ES=1;
+  62   3          }
+  63   2        }
+  64   1      }
+  65          
+  66          /*串行通讯中断*/
+  67          void touch() interrupt 4
+  68          {
+  69   1        RI=0; 
+  70   1        key=SBUF;
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    155    ----
+   CONSTANT SIZE    =     35    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

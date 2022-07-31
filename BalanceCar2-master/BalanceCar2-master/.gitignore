@@ -1,0 +1,22 @@
+# Keil5环境下STM32F103忽略文件
+# 移植自https://github.com/github/gitignore/blob/master/C.gitignore和keilkill.bat
+*.bak
+*.ddk
+*.edk 
+*.lst 
+*.lnp 
+*.mpf 
+*.mpj 
+*.obj 
+*.omf 
+*.plg 
+*.rpt 
+*.tmp 
+*.__i 
+*.crf 
+*.o 
+*.d 
+*.axf 
+*.tra 
+*.dep            
+JLinkLog.txt 
