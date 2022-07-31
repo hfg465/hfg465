@@ -1,0 +1,21 @@
+$>Has opened/created the file '%s'.
+(Its location is 1 line 10 column.)
+
+$>Now input something into the file 'bwfile.txt'(input '#' to quit).
+(Its location is 3 line 8,20,24,51 column.)
+
+$>Has opened/created the file 'bwfile.txt'.
+(Its location is 8 line 10 column.)
+
+$>Now input something into the file 'bwfile.txt'(input '#' to quit).
+(Its location is 10 line 8,20,24,51 column.)
+
+The character you gonna find is 'n'.
+(Its location is 12 line 21,22,27,34 column.)
+
+Have eaten?
+(Its location is 17 line 10 column.)
+
+It's a nice day,isn't it?
+(Its location is 18 line 8,19 column.)
+

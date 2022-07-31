@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"tcon-tmod.obj" 
+TO "TCON-TMOD" 
+RAMSIZE(256) 

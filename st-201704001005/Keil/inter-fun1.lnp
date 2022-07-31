@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"inter-fun1.obj" 
+TO "inter-fun1" 
+RAMSIZE(256) 
