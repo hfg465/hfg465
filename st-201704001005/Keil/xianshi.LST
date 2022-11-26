@@ -1,0 +1,60 @@
+C51 COMPILER V9.00   XIANSHI                                                               03/20/2019 21:50:51 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE XIANSHI
+OBJECT MODULE PLACED IN xianshi.OBJ
+COMPILER INVOKED BY: C:\Keil00\C51\BIN\C51.EXE xianshi.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define uint unsigned int
+   3          #define uchar unsigned char
+   4          uint i,j;
+   5          sbit d1=P1^0;
+   6          sbit d2=P1^1;
+   7          sbit d3=P1^2;
+   8          sbit d4=P1^3;
+   9          sbit d5=P1^4;
+  10          sbit d6=P1^5;
+  11          sbit d7=P1^6;
+  12          sbit d8=P1^7;
+  13          void main()
+  14          {
+  15   1       uchar table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  16   1       void delay();
+  17   1       uchar a;
+  18   1       uint k,m;
+  19   1       while(1)
+  20   1       {
+  21   2        d1=d2=d3=d4=d5=d6=d7=d8=0;
+  22   2        delay();
+  23   2        d1=d2=d3=d4=d5=d6=d7=d8=1;
+  24   2        delay();
+  25   2        for(a=0;a<10;a++)
+  26   2         {
+  27   3           P0=table[a];
+  28   3               for(m=0;m<350;m++)
+  29   3                 for(k=0;k<m;k++) ;
+  30   3               }
+  31   2         }
+  32   1      }
+  33          void delay()
+  34          {
+  35   1       for(i=0;i<10;i++)
+  36   1          for(j=0;j<10;j++);
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    142    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

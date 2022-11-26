@@ -1,0 +1,185 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/24/2019  20:07:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL00\C51\BIN\BL51.EXE STARTUP.obj, .\pwm.obj TO what RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  .\pwm.obj (PWM)
+  C:\KEIL00\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  what (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?PWM
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0047H     UNIT         ?PR?MAIN?PWM
+            CODE    08D3H     0032H     UNIT         ?PR?MTIME0INTERRUPT?PWM
+            CODE    0905H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   what (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PWM
+  +--> ?C_INITSEG
+
+
+
+SYMBOL TABLE OF MODULE:  what (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  20:07:17  PAGE 2
+
+
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        PWM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:0090H.2       PUBLIC        M2
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:08D3H         PUBLIC        mTime0Interrupt
+  B:0080H.0       PUBLIC        LED0
+  B:00A8H.7       PUBLIC        EA
+  B:0080H.1       PUBLIC        LED1
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:088CH         PUBLIC        main
+  D:0009H         PUBLIC        M1_S
+  D:000AH         PUBLIC        M2_S
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.5       PUBLIC        ET2
+  D:008CH         PUBLIC        TH0
+  B:00A8H.0       PUBLIC        EX0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  B:0090H.1       PUBLIC        M1
+  -------         PROC          MTIME0INTERRUPT
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  20:07:17  PAGE 3
+
+
+  -------         DO            
+  D:0008H         SYMBOL        count
+  -------         ENDDO         
+  C:08D3H         LINE#         27
+  C:08D7H         LINE#         31
+  C:08DAH         LINE#         33
+  C:08DCH         LINE#         34
+  C:08E3H         LINE#         35
+  C:08E7H         LINE#         37
+  C:08E9H         LINE#         38
+  C:08F0H         LINE#         39
+  C:08F4H         LINE#         41
+  C:08F6H         LINE#         42
+  C:08FDH         LINE#         43
+  C:0900H         LINE#         44
+  -------         ENDPROC       MTIME0INTERRUPT
+  -------         PROC          MAIN
+  C:088CH         LINE#         49
+  C:088CH         LINE#         51
+  C:088FH         LINE#         58
+  C:0892H         LINE#         59
+  C:0895H         LINE#         60
+  C:0897H         LINE#         62
+  C:0899H         LINE#         64
+  C:089BH         LINE#         66
+  C:089EH         LINE#         67
+  C:08A0H         LINE#         69
+  C:08A2H         LINE#         71
+  C:08A2H         LINE#         72
+  C:08A2H         LINE#         73
+  C:08A8H         LINE#         74
+  C:08A8H         LINE#         75
+  C:08ABH         LINE#         76
+  C:08ADH         LINE#         77
+  C:08AFH         LINE#         78
+  C:08B5H         LINE#         79
+  C:08B5H         LINE#         80
+  C:08B8H         LINE#         81
+  C:08BBH         LINE#         82
+  C:08BDH         LINE#         83
+  C:08C3H         LINE#         84
+  C:08C3H         LINE#         85
+  C:08C6H         LINE#         86
+  C:08C9H         LINE#         87
+  C:08CBH         LINE#         89
+  C:08CBH         LINE#         90
+  C:08CEH         LINE#         91
+  C:08D1H         LINE#         92
+  C:08D1H         LINE#         93
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PWM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008EH BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=271
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  20:07:17  PAGE 4
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

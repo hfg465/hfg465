@@ -1,0 +1,63 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\25832\Desktop\Multi-files\Keil\52_.uvproj
+Project File Date:  04/26/2021
+
+<h2>Output:</h2>
+compiling lcd.c...
+LCD.C(16): warning C276: constant in condition expression
+LCD.C(85): warning C235: parameter 3: different types
+LCD.C(117): error C101: ''': invalid character constant
+lcd.c(117): error C305: unterminated string/char const
+LCD.C(118): error C141: syntax error near '}'
+lcd.c(118): warning C316: unterminated conditionals
+lcd.c - 3 Error(s), 3 Warning(s).
+compiling lcd.c...
+LCD.C(16): warning C276: constant in condition expression
+LCD.C(85): warning C235: parameter 3: different types
+lcd.c(118): warning C316: unterminated conditionals
+lcd.c - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_DISPLAY?LCD
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+    ADDRESS: 0A26H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+    ADDRESS: 0A3CH
+Program Size: data=53.1 xdata=0 code=606
+creating hex file from "52_"...
+"52_" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling lcd.c...
+LCD.C(16): warning C276: constant in condition expression
+LCD.C(85): warning C235: parameter 3: different types
+lcd.c(118): warning C316: unterminated conditionals
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_DISPLAY?LCD
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+    ADDRESS: 0A26H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY_US
+    MODULE:  lcd.obj (LCD)
+    ADDRESS: 0A3CH
+Program Size: data=53.1 xdata=0 code=606
+creating hex file from "52_"...
+"52_" - 0 Error(s), 7 Warning(s).

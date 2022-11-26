@@ -1,0 +1,39 @@
+C51 COMPILER V9.00   51XIAODENG                                                            03/17/2019 11:04:59 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE 51XIAODENG
+OBJECT MODULE PLACED IN 51xiaodeng.OBJ
+COMPILER INVOKED BY: C:\Keil00\C51\BIN\C51.EXE 51xiaodeng.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define uint unsigned int
+   3          sbit led=P1^0;
+   4          uint i,j;
+   5          void main()
+   6          {
+   7   1       while(1)
+   8   1       {
+   9   2        led=0;
+  10   2        for(i=0;i<10;i++)
+  11   2           for(j=0;j<10;j++);
+  12   2              led=1;
+  13   2        for(i=0;i<10;i++)
+  14   2           for(j=0;j<10;j++);
+  15   2              }
+  16   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     87    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
