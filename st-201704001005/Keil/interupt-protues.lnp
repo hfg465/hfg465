@@ -1,5 +1,0 @@
-"STARTUP.obj",
-"interupt-protues.obj",
-"tcon-tmod.obj" 
-TO "interupt-protues" 
-RAMSIZE(256) 

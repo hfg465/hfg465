@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"Serial.obj" 
-TO "Serial" 
-RAMSIZE(256) 

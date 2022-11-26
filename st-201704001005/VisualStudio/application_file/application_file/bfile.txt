@@ -1,9 +1,0 @@
-$>Input a file name which is wrote data into and read now:
-$>bfile.txt
-$>Now input something into the file 'bfile.txt'(input '#' to quit).
-
-Here's what you typed:
-
-
-You are going to make it!
-hahahah dooooooo

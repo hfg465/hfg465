@@ -1,5 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\training.obj",
-".\Objects\lcd_12864.obj" 
-TO ".\Objects\training" 
-PRINT(".\Listings\training.m51") RAMSIZE(256) 

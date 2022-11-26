@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"lcd.obj" 
-TO "52_" 
-RAMSIZE(256) 

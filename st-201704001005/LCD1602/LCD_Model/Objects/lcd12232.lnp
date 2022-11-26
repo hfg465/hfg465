@@ -1,4 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\lcd12232_main.obj" 
-TO ".\Objects\lcd12232" 
-PRINT(".\Listings\lcd12232.m51") RAMSIZE(256) 

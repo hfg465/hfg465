@@ -1,5 +1,0 @@
-"STARTUP.obj",
-".\music.obj",
-".\pwm.obj" 
-TO "music" 
-RAMSIZE(256) 
