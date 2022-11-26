@@ -1,0 +1,22 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\ASUS\Desktop\Keil\shizhong.uvproj
+Project File Date:  03/24/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+compiling main.c...
+C:\BAIDUNET压缩包\单片机\51学习板\10、配套源码100多个\10、配套源码100多个\【实验104】DS1302时钟显示\DS1302 LCD1602显示\MAIN.C(62): warning C290: missing return value
+C:\BAIDUNET压缩包\单片机\51学习板\10、配套源码100多个\10、配套源码100多个\【实验104】DS1302时钟显示\DS1302 LCD1602显示\MAIN.C(71): warning C290: missing return value
+C:\BAIDUNET压缩包\单片机\51学习板\10、配套源码100多个\10、配套源码100多个\【实验104】DS1302时钟显示\DS1302 LCD1602显示\MAIN.C(225): warning C290: missing return value
+C:\BaiduNet压缩包\单片机\51学习板\10、配套源码100多个\10、配套源码100多个\【实验104】DS1302时钟显示\DS1302 LCD1602显示\main.c - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=20.0 xdata=0 code=1533
+creating hex file from "shizhong"...
+"shizhong" - 0 Error(s), 0 Warning(s).

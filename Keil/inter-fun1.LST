@@ -1,0 +1,63 @@
+A51 MACRO ASSEMBLER  INTER_FUN1                                                           11/10/2019 13:02:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN inter-fun1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE inter-fun1.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           ORG 0000H
+0000 0130              2     START:AJMP MAIN
+000B                   3           ORG 000BH
+000B 0147              4               AJMP INTER
+0030                   5               ORG 0030H               
+0030 758C00            6      MAIN:MOV TH0,#00H
+0033 758A00            7           MOV TL0,#00H
+0036 758901            8               MOV TMOD,#01H
+0039 C3                9               CLR C
+                      10     ;LOOP3:MOV R6,#8
+003A 74FF             11           MOV A,#0FFH
+003C F590             12               MOV P1,A
+003E 7F0E             13      AMOC:MOV R7,#14
+0040 D28C             14     LOOP1:SETB TR0
+0042 208D02           15      TELL:JB TF0,INTER
+0045 80FB             16               SJMP TELL
+0047 C28D             17     INTER:CLR TF0
+0049 758C00           18               MOV TH0,#00H
+004C 758A00           19               MOV TL0,#00H
+004F DFEF             20               DJNZ R7,LOOP1
+                      21               ;CLR C                                 ;循环点亮，前一个不灭
+0051 33               22               RLC A                          ;
+0052 F590             23               MOV P1,A
+                      24               ;DJNZ R6,LOOP2
+                      25               ;SJMP LOOP3
+0054 013E             26     LOOP2:AJMP AMOC                          ;LOOP1,LOOP2
+                      27               END
+A51 MACRO ASSEMBLER  INTER_FUN1                                                           11/10/2019 13:02:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AMOC . . . . . . .  C ADDR   003EH   A   
+INTER. . . . . . .  C ADDR   0047H   A   
+LOOP1. . . . . . .  C ADDR   0040H   A   
+LOOP2. . . . . . .  C ADDR   0054H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TELL . . . . . . .  C ADDR   0042H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

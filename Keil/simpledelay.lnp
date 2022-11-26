@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"simpledelay.obj" 
+TO "simpledelay" 
+RAMSIZE(256) 

@@ -1,0 +1,63 @@
+C51 COMPILER V9.60.0.0   TRAINING1                                                         10/06/2021 20:31:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TRAINING1
+OBJECT MODULE PLACED IN .\Objects\training1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE training1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\training1.lst) TABS(2) OBJECT(.\Objects\training1.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uint unsigned int
+   3          #define uchar unsigned char
+   4          
+   5          uchar code seg_tab[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,    //共阴极数码管段码
+   6                             0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x40};
+   7          uchar key=16;
+   8          sbit seg_ch=P2^0;                //定义数码管片选端
+   9          
+  10          void init_main()
+  11          {
+  12   1        EA=1;                   //中断总允许 开
+  13   1        ES=1;                   //串行中断允许 开
+  14   1        SM0=0;                  //设置串行工作方式 1
+  15   1        SM1=1;
+  16   1        REN=1;                  //串行数据接收允许 开
+  17   1        TMOD=0x20;              //设置定时器工作方式 1
+  18   1        TH1=0xfd;               //设置定时初值/波特率，9600 bps
+  19   1        TL1=0xfd;
+  20   1        TR1=1;                  //定时器开启
+  21   1        seg_ch=0;               //数码管片选 开启
+  22   1      } 
+  23                             
+  24          /*主函数入口*/                   
+  25          void main()
+  26          {
+  27   1        init_main();
+  28   1        while(1)
+  29   1        {
+  30   2          P0=seg_tab[key];
+  31   2        }
+  32   1      }
+  33          
+  34          /*串行通讯中断*/
+  35          void touch() interrupt 4
+  36          {
+  37   1        RI=0; 
+  38   1        key=SBUF;
+  39   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

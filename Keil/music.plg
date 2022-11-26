@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\ASUS\Desktop\Keil\music.uvproj
+Project File Date:  03/24/2019
+
+<h2>Output:</h2>
+compiling music.c...
+C:\BaiduNet压缩包\单片机\music.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.2 xdata=0 code=781
+creating hex file from "music"...
+"music" - 0 Error(s), 0 Warning(s).
+compiling pwm.c...
+C:\BaiduNet压缩包\单片机\pwm.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MAIN
+    MODULE:  .\pwm.obj (PWM)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAIN?PWM
+*** ERROR L118: REFERENCE MADE TO ERRONEOUS EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  C:\KEIL00\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 0AC3H
+Program Size: data=16.2 xdata=0 code=1037
+Target not created
